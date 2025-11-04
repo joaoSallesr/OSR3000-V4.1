@@ -13,12 +13,13 @@ static icm20948_device_t icm_dev;
 
 esp_err_t icm_init(void)
 {
-    i2c_master_dev_handle_t dev_handle;
+    i2c_master_dev_handle_t dev_handle = NULL;
+
+    ESP_ERROR_CHECK(i2c_master_bus_add_device(bus_handle, &dev_cfg, &dev_handle));
+
     icm0948_config_i2c_t icm_config = {
         .i2c_dev = dev_handle,
         .i2c_addr = dev_cfg.device_address};
-
-    ESP_ERROR_CHECK(i2c_master_bus_add_device(bus_handle, &dev_cfg, &dev_handle));
 
     bool icm_initialized = true;
     /* setup icm20948 device */

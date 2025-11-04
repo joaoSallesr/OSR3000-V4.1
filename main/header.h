@@ -86,7 +86,7 @@
 #define MAX_USED 0.8 // Maximum percentage of flash to be used by littlefs
 #define FILENAME_LENGTH 32
 
-#define BMP390_I2C_ADDRESS (0x77)
+#define BMP390_I2C_ADDRESS (0x76)
 
 #define FUSION_SAMPLE_RATE 100
 
