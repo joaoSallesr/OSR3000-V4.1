@@ -41,7 +41,7 @@
 #include "esp_vfs_fat.h"
 #include "esp_littlefs.h"
 
-#define DROGUE_THRESHOLD 1
+#define DROGUE_THRESHOLD 10
 #define MAIN_ALTITUDE 450
 #define KNOWN_PRESSURE 101400 // pascal, given by local weather station
 #define KNOWN_ALTITUDE 510 // m, given by local weather station

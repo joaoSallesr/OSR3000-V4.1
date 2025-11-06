@@ -251,6 +251,7 @@ void app_main(void)
         STATUS |= SAFE_MODE;
         xSemaphoreGive(xStatusMutex);
         ESP_LOGE("MAIN", "SAFE MODE");
+        vTaskDelay(pdMS_TO_TICKS(3000));
     }
 
     // Start tasks
@@ -272,9 +273,9 @@ void app_main(void)
         xSemaphoreGive(xStatusMutex);
         
         // If not armed, not in safe mode and RBF is off, arm the system
-        arm = !(local_status & ARMED) && !(local_status & SAFE_MODE) && gpio_get_level(RBF_GPIO) == HIGH;
+        arm = !(local_status & ARMED) && !(local_status & SAFE_MODE) && gpio_get_level(RBF_GPIO) == LOW;
         // If already armed, check disarm condition
-        disarm = !arm && !(local_status & FLYING) && (gpio_get_level(RBF_GPIO) == LOW);
+        disarm = !arm && !(local_status & FLYING) && (gpio_get_level(RBF_GPIO) == HIGH);
 
         if (arm)
         {
