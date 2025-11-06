@@ -70,7 +70,7 @@ void task_deploy(void *pvParameters)
             vTaskDelay(pdMS_TO_TICKS(500));
             gpio_set_level(DROGUE_GPIO, LOW);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 xQueueReceive(xAltQueue, &current_altitude, portMAX_DELAY);
                 if (!(current_altitude < max_altitude - DROGUE_THRESHOLD))
@@ -95,7 +95,7 @@ void task_deploy(void *pvParameters)
             vTaskDelay(pdMS_TO_TICKS(500));
             gpio_set_level(MAIN_GPIO, LOW);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 xQueueReceive(xAltQueue, &current_altitude, portMAX_DELAY);
                 if (!(current_altitude < start_altitude + MAIN_ALTITUDE))

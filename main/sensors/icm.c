@@ -10,6 +10,7 @@ static const float temp_scale = 1.0f/333.87f;
 static const float temp_offset = 14.0f;
 
 static icm20948_device_t icm_dev;
+static icm0948_config_i2c_t icm_config;
 
 esp_err_t icm_init(void)
 {
@@ -17,9 +18,8 @@ esp_err_t icm_init(void)
 
     ESP_ERROR_CHECK(i2c_master_bus_add_device(bus_handle, &dev_cfg, &dev_handle));
 
-    icm0948_config_i2c_t icm_config = {
-        .i2c_dev = dev_handle,
-        .i2c_addr = dev_cfg.device_address};
+    icm_config.i2c_dev = dev_handle;
+    icm_config.i2c_addr = dev_cfg.device_address;
 
     bool icm_initialized = true;
     /* setup icm20948 device */
