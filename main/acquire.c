@@ -44,7 +44,7 @@ void status_checks(data_t *data)
     // Check if accel is higher than FLYING_THRESHOLD
     if (!(data->status & FLYING))
     {
-        if (fabs(data->bmp_altitude) > FLYING_THRESHOLD)
+        if (fabs(data->bmp_altitude) > FLYING_THRESHOLD * 100)
         {
             xSemaphoreTake(xStatusMutex, portMAX_DELAY);
             STATUS |= FLYING;
