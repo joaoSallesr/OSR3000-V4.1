@@ -41,10 +41,10 @@ float read_battery_voltage(adc_oneshot_unit_handle_t adc_unit_handle, adc_cali_h
 
 void status_checks(data_t *data)
 {
-    // Check if accel is higher than FLYING_THRESHOLD
+    // Check if altitude is higher than KNOWN_ALTITUDE + FLYING_THRESHOLD
     if (!(data->status & FLYING))
     {
-        if (fabs(data->bmp_altitude) > FLYING_THRESHOLD * 100)
+        if (fabs(data->bmp_altitude) > KNOWN_ALTITUDE + FLYING_THRESHOLD)
         {
             xSemaphoreTake(xStatusMutex, portMAX_DELAY);
             STATUS |= FLYING;

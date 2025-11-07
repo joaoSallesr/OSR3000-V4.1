@@ -103,7 +103,7 @@
 
 #define G 9.80665
 
-#define FLYING_THRESHOLD 15 // BMP altitude threshold to consider rocket flying in meters
+#define FLYING_THRESHOLD 60 // BMP altitude threshold to consider rocket flying in meters
 #define CUTOFF_THRESHOLD 2  // Acceleration threshold to consider motor cutoff in g's
 #define LANDED_THRESHOLD 2  // Altitude threshold to consider rocket landed in meters
 

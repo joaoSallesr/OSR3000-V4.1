@@ -173,7 +173,7 @@ void fusion_task(data_t *data, FusionOffset *offset, FusionAhrs *ahrs, icm20948_
     FusionAhrsUpdate(ahrs, gyroscope, accelerometer, magnetometer, deltaTime);
     const FusionVector a = FusionAhrsGetLinearAcceleration(ahrs);
     float accel = sqrt(powf(a.axis.x, 2) + powf(a.axis.y, 2) + powf(a.axis.z, 2));
-    data->accel = (int8_t)floor(accel*100);
+    data->accel = (int8_t)floor(accel*10);
     const FusionQuaternion q = FusionAhrsGetQuaternion(ahrs);
     data->orientation_q1 = q.element.z;
     data->orientation_q2 = q.element.w;
